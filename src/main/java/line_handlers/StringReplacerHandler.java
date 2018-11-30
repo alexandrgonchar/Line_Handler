@@ -15,8 +15,10 @@ public class StringReplacerHandler implements LineHandler {
             this.length = length;
             this.substring = substring;
 
-            for (int i = 0; i < handler.getResources().size(); i++)
-                handleLine(handler.getResources().get(i));
+            for (int i = 0; i < handler.getResources().size(); i++) {
+                if (handler.getResources().get(i) != null)
+                    handleLine(handler.getResources().get(i));
+            }
 
         } catch (NullPointerException e) {
             System.out.println("Empty resources handler in StringReplacerHandler!");
@@ -44,5 +46,9 @@ public class StringReplacerHandler implements LineHandler {
         for (String line : resultText) {
             System.out.println(line);
         }
+    }
+
+    public ArrayList<String> getResultText() {
+        return resultText;
     }
 }
