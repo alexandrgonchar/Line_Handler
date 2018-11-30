@@ -14,7 +14,9 @@ public class AmountOfCharHandler implements LineHandler {
        try {
            this.ch = ch;
 
-           for (String string : handler.getResources()) handleLine(string);
+           for (String string : handler.getResources())
+               if (string != null) handleLine(string);
+
        } catch (NullPointerException e) {
            System.out.println("Empty resources handler in AmountOfCharHandler!");
        }
@@ -47,5 +49,9 @@ public class AmountOfCharHandler implements LineHandler {
                     .sorted(Map.Entry.comparingByKey())
                     .forEach(System.out::println);
         }
+    }
+
+    public Map<String, Long> getResultMap() {
+        return resultMap;
     }
 }

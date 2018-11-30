@@ -12,7 +12,8 @@ public class MaxPalindromeHandler implements LineHandler {
 
     public MaxPalindromeHandler(ResourcesHandler handler) {
         try {
-            for (String string : handler.getResources()) handleLine(string);
+            for (String string : handler.getResources())
+                if (string != null) handleLine(string);
         } catch (NullPointerException e) {
             System.out.println("Empty resources handler in MaxPalindromeHandler!");
         }
@@ -38,5 +39,9 @@ public class MaxPalindromeHandler implements LineHandler {
         } catch (NoSuchElementException e) {
             System.out.println("Find no palindrome. List empty");
         }
+    }
+
+    public ArrayList<String> getPalindromes() {
+        return palindromes;
     }
 }
